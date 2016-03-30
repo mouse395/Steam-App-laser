@@ -19,10 +19,10 @@ void loop() {
     ldrV1 = analogRead(ldr);
     delay(10);
     ldrV2 = analogRead(ldr);
-  if (ldrV1-ldrV2 > 20) {
-  digitalWrite(buzzer, HIGH);
-  digitalWrite(led, HIGH);
-  }
+    if (ldrV1-ldrV2 > 20) {
+      digitalWrite(buzzer, HIGH);
+      digitalWrite(led, HIGH);
+    }
     else{
       digitalWrite(buzzer, LOW);
       digitalWrite(led, LOW);

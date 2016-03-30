@@ -43,9 +43,11 @@ void loop() {
 	Serial.println(value);
 
 	//if there is interferience the light will turn on
-	if (sensorValue < sensorValueInitial - 20) {
+	if (sensorValue < sensorValueInitial - 10) {
 		digtalWrite(LEDPin, HIGH);
 	}
+
+	else {digitalWrite(LEDPin, LOW);;}
 
 	delay(10);
 }

@@ -1,7 +1,10 @@
 int ldr = A4;
 int buzzer = 11;
-int led = A0;
-long ldrV1, ldrV2;
+//led is also a digitalWrite so we use pins from 0 to 12
+int led = 4;
+
+//no need for longs
+int ldrV1, ldrV2;
 
 
 void setup() {
@@ -12,6 +15,7 @@ void setup() {
 }
 
 void loop() {
+
     ldrV1 = analogRead(ldr);
     delay(10);
     ldrV2 = analogRead(ldr);

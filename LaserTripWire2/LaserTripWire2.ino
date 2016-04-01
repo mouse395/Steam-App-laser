@@ -1,7 +1,7 @@
 
 #include <LiquidCrystal.h>
 
-const int LEDPin = 4;
+const int LEDPin = 7;
 const int sensorPin = A0;
 
 int sensorValueInitial;
@@ -39,6 +39,7 @@ void loop() {
 
   //This establishes the value of resistor in real time
   sensorValue = analogRead(sensorPin);
+ 
 
   //prints raw value
   Serial.print("inital sensor Value: ");

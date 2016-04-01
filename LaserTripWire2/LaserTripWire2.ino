@@ -18,7 +18,7 @@ void loop() {
 
   /*this establishes the value of the resistor when the
   laser hits it*/
-  While (pacer < 5) {
+  while (pacer < 5) {
     sensorValueInitial = analogRead(sensorPin);
     delay(100);
     pacer++;
@@ -30,22 +30,18 @@ void loop() {
   sensorValue = analogRead(sensorPin);
 
   //prints raw value
-  Serial.println("inital sensor Value: " + sensorValueInitial);
-  Serial.print("raw sensor value: ");
+  Serial.print("inital sensor Value: ");
+  Serial.println(sensorValueInitial);
+  Serial.print("new sensor value: ");
   Serial.println(sensorValue);
 
-  //changing the raw value to a (0,255) value
-  value = sensorValue / 4;
-
-  Serial.print("Mapped sensor value: ")
-  Serial.println(value);
 
   //if there is interferience the light will turn on
   if (sensorValue < sensorValueInitial - 10) {
-    digtalWrite(LEDPin, HIGH);
+    digitalWrite(LEDPin, HIGH);
   }
 
-  else {digitalWrite(LEDPin, LOW);;}
+  else {digitalWrite(LEDPin, LOW);}
 
   delay(10);
 }

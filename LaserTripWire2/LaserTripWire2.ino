@@ -1,18 +1,29 @@
+
+#include <LiquidCrystal.h>
+
 const int LEDPin = 4;
-
 const int sensorPin = A0;
-
-int value = 0;
 
 int sensorValueInitial;
 int sensorValue;
-
 int pacer = 0;
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 void setup() {
   Serial.begin(9600);
   pinMode(LEDPin, OUTPUT);
+
+  lcd.begin(16,2);
 }
+
+void refresh() {
+  lcd.setCursor(0, 0);
+  lcd.print("             ");
+  lcd.setCursor(0, 1);
+  lcd.print("             ");
+  lcd.setCursor(0, 0);
+  }
 
 void loop() {
 
@@ -39,9 +50,17 @@ void loop() {
   //if there is interferience the light will turn on
   if (sensorValue < sensorValueInitial - 10) {
     digitalWrite(LEDPin, HIGH);
+    refresh();
+    lcd.print("MOTION");
+    lcd.setCursor(0, 1);
+    lcd.print("DETECTED!");
   }
 
-  else {digitalWrite(LEDPin, LOW);}
+  else {
+    digitalWrite(LEDPin, LOW);
+    refresh();
+    lcd.print("No Motion");
+    }
 
   delay(10);
 }
